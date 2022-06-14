@@ -12,7 +12,7 @@
     <meta content="Admin Dashboard" name="description" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <link rel="shortcut icon" href="<?= base_url(); ?>assets/login/img/logo.png">
+    <link rel="shortcut icon" href="<?= base_url(); ?>assets/icon.png">
 
     <link href="<?= base_url(); ?>assets/plugins/animate/animate.css" rel="stylesheet" type="text/css">
 
@@ -72,9 +72,9 @@
             <div class="topbar-left">
                 <div class="text-center bg-logo">
                     <?php if ($_SESSION['role'] == 'Admin') { ?>
-                        <a href="<?= base_url(); ?>Admin" class="logo"><img src="<?= base_url(); ?>assets/login/img/logo.png" alt="logo" style="width: 15%;"> Rekam Medis</a>
+                        <a href="<?= base_url(); ?>Admin" class="logo"><img src="<?= base_url(); ?>assets/icon.png" alt="logo" style="width: 15%;"> Rekam Medis</a>
                     <?php } else { ?>
-                        <a href="<?= base_url(); ?>Ho" class="logo"><img src="<?= base_url(); ?>assets/login/img/logo.png" alt="logo" style="width: 15%;"> Rekam Medis</a>
+                        <a href="<?= base_url(); ?>Ho" class="logo"><img src="<?= base_url(); ?>assets/icon.png" alt="logo" style="width: 15%;"> Rekam Medis</a>
                     <?php } ?>
 
                     <!-- <a href="index.html" class="logo"><img src="<?= base_url(); ?>assets/images/logo.png" height="24" alt="logo"></a> -->

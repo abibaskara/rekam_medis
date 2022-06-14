@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url(); ?>assets/login/img/logo.png">
+    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url(); ?>assets/icon.png">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="<?= base_url(); ?>assets/login/css/bootstrap.min.css">
     <!-- Fontawesome CSS -->
@@ -43,9 +43,9 @@
             <div class="fxt-heading-content">
                 <div class="fxt-inner-wrap fxt-transformX-R-50 fxt-transition-delay-3">
                     <div class="fxt-transformX-R-50 fxt-transition-delay-10">
-                        <a href="login-33.html" class="fxt-logo"><img src="<?= base_url(); ?>assets/login/img/logo.png" alt="Logo" style="width: 45%;"></a>
+                        <a href="login-33.html" class="fxt-logo"><img src="<?= base_url(); ?>assets/download.png" alt="Logo" style="width: 100%;"></a>
                     </div>
-                    <div class="fxt-transformX-R-50 fxt-transition-delay-10">
+                    <div class="fxt-transformX-R-50 fxt-transition-delay-10" style="margin-bottom: 30px;">
                         <div class="fxt-middle-content">
                             <div class="fxt-sub-title">Welcome to</div>
                             <h1 class="fxt-main-title">Sistem Informasi Rekam Medis Karyawan.</h1>
