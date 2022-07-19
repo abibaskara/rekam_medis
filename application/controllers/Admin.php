@@ -178,7 +178,7 @@ class Admin extends CI_Controller
         $database2 = "jabatan";
         $database3 = "departement";
         $join1 = "jabatan.id_jabatan=karyawan.id_jabatan";
-        $join2 = "departement.id_departement=departement.id_departement";
+        $join2 = "departement.id_departement=karyawan.id_departement";
 
         $data = [
             'karyawan' => $this->AdminModel->doubleJoin($database, $database2, $database3, $join1, $join2),

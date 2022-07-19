@@ -57,8 +57,8 @@
                                             <td align="center"><?= $row->nama_departement; ?></td>
                                             <td align="center"><?= $row->jk; ?></td>
                                             <td align="center"><?= $row->tempat_lahir; ?></td>
-                                            <td align="center"><?= date('d-m-Y', strtotime($row->tgl_lahir)); ?></td>
                                             <td align="center"><?= $row->alamat; ?></td>
+                                            <td align="center"><?= $row->no_hp; ?></td>
                                             <td align="center" style="color: #73e600;">
                                                 <a href="#update<?= $row->id_karyawan ?>" data-toggle="modal" class="btn-animation" data-animation="rubberBand"> <button class="btn btn-primary" title="Edit"><i class="ti-pencil-alt"></i></button></a>
                                                 <a href="#delete<?= $row->id_karyawan ?>" data-toggle="modal" class="btn-animation" data-animation="rubberBand"> <button class="btn btn-danger" title="Delete"><i class="ti-trash"></i></button> </a>
@@ -189,7 +189,7 @@
                             <div class="col-lg-12 mt-2">
                                 <label for="id_jabatan_edit" class="control-label">Jabatan<br>
                                 </label>
-                                <select class="select2 form-control mb-3 custom-select" id="id_jabatan_edit" name="id_jabatan_edit" style="width: 100%; height:36px;" required>
+                                <select class="select2 form-control mb-3 custom-select" id="id_jabatan_edit" name="id_jabatan" style="width: 100%; height:36px;" required>
                                     <option>Select a Jabatan</option>
                                     <?php foreach ($jabatan as $raw) { ?>
                                         <option value="<?= $raw->id_jabatan ?>" <?= $raw->id_jabatan == $row->id_jabatan ? 'selected' : '' ?>><?= $raw->nama_jabatan ?></option>
