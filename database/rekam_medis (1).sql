@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 14 Jun 2022 pada 03.50
--- Versi server: 5.7.33
--- Versi PHP: 7.4.19
+-- Generation Time: Oct 17, 2022 at 02:37 AM
+-- Server version: 5.7.33
+-- PHP Version: 7.4.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,160 +24,155 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `departement`
+-- Table structure for table `departement`
 --
 
 CREATE TABLE `departement` (
   `id_departement` int(11) NOT NULL,
-  `divisi` varchar(255) NOT NULL,
-  `nama_departement` varchar(255) NOT NULL
+  `divisi` varchar(20) NOT NULL,
+  `nama_departement` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `departement`
+-- Dumping data for table `departement`
 --
 
 INSERT INTO `departement` (`id_departement`, `divisi`, `nama_departement`) VALUES
-(1, 'BISCUIT', 'service assurance'),
-(3, 'WAFER', 'test');
+(1, 'BISCUIT', 'IT Programmer');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `jabatan`
+-- Table structure for table `jabatan`
 --
 
 CREATE TABLE `jabatan` (
   `id_jabatan` int(11) NOT NULL,
-  `nama_jabatan` varchar(255) NOT NULL
+  `nama_jabatan` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `jabatan`
+-- Dumping data for table `jabatan`
 --
 
 INSERT INTO `jabatan` (`id_jabatan`, `nama_jabatan`) VALUES
-(6, 'Perawat'),
-(7, 'Dokter Gigi'),
-(8, 'Dokter Umum');
+(1, 'Web Development');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `karyawan`
+-- Table structure for table `karyawan`
 --
 
 CREATE TABLE `karyawan` (
   `id_karyawan` int(11) NOT NULL,
-  `nik` varchar(255) NOT NULL,
-  `nama_karyawan` varchar(255) NOT NULL,
+  `nik` varchar(10) NOT NULL,
+  `nama_karyawan` varchar(50) NOT NULL,
   `id_jabatan` int(11) NOT NULL,
   `id_departement` int(11) NOT NULL,
-  `jk` varchar(255) NOT NULL,
-  `tempat_lahir` varchar(255) NOT NULL,
+  `jk` enum('Pria','Wanita') NOT NULL,
+  `tempat_lahir` varchar(30) NOT NULL,
   `tgl_lahir` date NOT NULL,
   `alamat` text NOT NULL,
-  `no_hp` varchar(255) NOT NULL
+  `no_hp` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `karyawan`
+-- Dumping data for table `karyawan`
 --
 
 INSERT INTO `karyawan` (`id_karyawan`, `nik`, `nama_karyawan`, `id_jabatan`, `id_departement`, `jk`, `tempat_lahir`, `tgl_lahir`, `alamat`, `no_hp`) VALUES
-(2, '0009224322', 'Abi Baskara Atthallah', 8, 1, 'Pria', 'Bandung', '1999-09-17', 'Villa Mutiara Lido Blok A4 No18', '082299915127'),
-(3, '0009123422', 'Dodi', 6, 1, 'Pria', 'Bandung', '2022-06-08', 'Jl. Kober 1234', '08123123122112');
+(1, '0009224322', 'Admin', 1, 1, 'Pria', 'Bandung', '2022-07-25', 'Bogor', '082299915127'),
+(2, '000922433', 'Dept. Head HSE', 1, 1, 'Pria', 'Bandung', '2022-07-25', 'Bogor', '09123102938912');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kategori_obat`
+-- Table structure for table `kategori_obat`
 --
 
 CREATE TABLE `kategori_obat` (
   `id_kategori_obat` int(11) NOT NULL,
-  `nama_kategori` varchar(255) NOT NULL
+  `nama_kategori` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `kategori_obat`
+-- Dumping data for table `kategori_obat`
 --
 
 INSERT INTO `kategori_obat` (`id_kategori_obat`, `nama_kategori`) VALUES
-(1, 'Sirup'),
-(2, 'Tablet');
+(1, 'Kapsul');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kunjungan_berobat`
+-- Table structure for table `kunjungan_berobat`
 --
 
 CREATE TABLE `kunjungan_berobat` (
   `id_kunjungan_berobat` int(11) NOT NULL,
   `id_karyawan` int(11) NOT NULL,
-  `nik` varchar(255) NOT NULL,
-  `nama` varchar(255) NOT NULL,
-  `keluhan` varchar(255) NOT NULL,
-  `diagnosa` varchar(255) NOT NULL,
+  `nik` varchar(10) NOT NULL,
+  `nama` varchar(30) NOT NULL,
+  `keluhan` varchar(50) NOT NULL,
+  `diagnosa` varchar(20) NOT NULL,
   `id_obat_pasien` int(11) NOT NULL,
   `tgl` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `kunjungan_berobat`
+-- Dumping data for table `kunjungan_berobat`
 --
 
 INSERT INTO `kunjungan_berobat` (`id_kunjungan_berobat`, `id_karyawan`, `nik`, `nama`, `keluhan`, `diagnosa`, `id_obat_pasien`, `tgl`) VALUES
-(1, 2, '0009224322', 'Abi Baskara Atthallah', 'Sakit Perut', 'Diare', 1, '2022-06-12');
+(1, 1, '0009224322', 'Admin', 'Batuk', 'Radang', 1, '2022-09-24');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `mcu`
+-- Table structure for table `mcu`
 --
 
 CREATE TABLE `mcu` (
   `id_mcu` int(11) NOT NULL,
   `id_karyawan` int(11) NOT NULL,
-  `fasilitator_mcu` varchar(255) NOT NULL,
+  `fasilitator_mcu` varchar(30) NOT NULL,
   `waktu_mcu` date NOT NULL,
-  `tekanan_darah` varchar(255) NOT NULL,
-  `hasil_pemeriksaan_dokter` varchar(255) NOT NULL,
-  `hasil_lab_urin` varchar(255) NOT NULL,
-  `hasil_rontgen_thorak` varchar(255) NOT NULL,
-  `hasil_pemeriksaan_mata` varchar(255) NOT NULL,
-  `hasil_pemeriksaan_pendengaran` varchar(255) NOT NULL
+  `tekanan_darah` varchar(20) NOT NULL,
+  `hasil_pemeriksaan_dokter` varchar(50) NOT NULL,
+  `hasil_lab_urin` varchar(50) NOT NULL,
+  `hasil_rontgen_thorak` varchar(50) NOT NULL,
+  `hasil_pemeriksaan_mata` varchar(50) NOT NULL,
+  `hasil_pemeriksaan_pendengaran` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `obat`
+-- Table structure for table `obat`
 --
 
 CREATE TABLE `obat` (
   `id_obat` int(11) NOT NULL,
   `id_kategori_obat` int(11) NOT NULL,
-  `nama_obat` varchar(255) NOT NULL,
-  `kegunaan_obat` varchar(255) NOT NULL,
+  `nama_obat` varchar(30) NOT NULL,
+  `kegunaan_obat` varchar(30) NOT NULL,
   `qty` int(11) NOT NULL,
-  `satuan` varchar(255) NOT NULL,
+  `satuan` varchar(10) NOT NULL,
   `expired_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `obat`
+-- Dumping data for table `obat`
 --
 
 INSERT INTO `obat` (`id_obat`, `id_kategori_obat`, `nama_obat`, `kegunaan_obat`, `qty`, `satuan`, `expired_date`) VALUES
-(2, 2, 'paracetamol', 'asdlandlasndklna lkdnaskldnlkasndl anlksdnkalsndkl nakldnaskndl kanskdlnaslkdn kandka ns', 2, 'Strip', '2022-06-30'),
-(3, 2, 'Diapet', 'Mencegah Melilit', 0, 'Strip', '2022-06-30');
+(1, 1, 'obat batuk', 'meredakan batuk', 3, 'Strip', '2022-09-30');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `obat_pasien`
+-- Table structure for table `obat_pasien`
 --
 
 CREATE TABLE `obat_pasien` (
@@ -188,16 +183,16 @@ CREATE TABLE `obat_pasien` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `obat_pasien`
+-- Dumping data for table `obat_pasien`
 --
 
 INSERT INTO `obat_pasien` (`id_obat_pasien`, `id_kunjungan_berobat`, `id_obat`, `qty`) VALUES
-(1, 1, 3, 2);
+(1, 1, 1, 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `skd`
+-- Table structure for table `skd`
 --
 
 CREATE TABLE `skd` (
@@ -205,171 +200,163 @@ CREATE TABLE `skd` (
   `id_karyawan` int(11) NOT NULL,
   `tanggal_mulai_skd` date NOT NULL,
   `tanggal_akhir_skd` date NOT NULL,
-  `diagnosa_penyakit` varchar(255) NOT NULL,
-  `tempat_berobat` varchar(255) NOT NULL,
+  `diagnosa_penyakit` varchar(30) NOT NULL,
+  `tempat_berobat` varchar(30) NOT NULL,
   `created_at` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `skd`
---
-
-INSERT INTO `skd` (`id_skd`, `id_karyawan`, `tanggal_mulai_skd`, `tanggal_akhir_skd`, `diagnosa_penyakit`, `tempat_berobat`, `created_at`) VALUES
-(1, 3, '2022-06-13', '2022-06-30', 'Diare', 'Klinik AA', '2022-06-13'),
-(2, 2, '2022-06-13', '2022-06-14', 'Pusing', 'Klink Deden', '2022-06-13');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
   `id_user` int(11) NOT NULL,
   `id_karyawan` int(11) NOT NULL,
   `role` enum('Admin','HO') NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `no_telp` varchar(255) NOT NULL,
-  `foto` varchar(255) DEFAULT 'default.png',
+  `email` varchar(30) NOT NULL,
+  `no_telp` varchar(15) NOT NULL,
+  `foto` varchar(50) DEFAULT 'default.png',
   `password` varchar(255) NOT NULL,
   `is_active` enum('1','2') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id_user`, `id_karyawan`, `role`, `email`, `no_telp`, `foto`, `password`, `is_active`) VALUES
-(1, 2, 'Admin', 'admin@gmail.com', '0812345678221', '29fe291b14c60bf0bfa26446f7b65466.png', '$2y$10$USnTGOmttsv84ZRHK/gGCeEZNxV1A1kdX3eHjm.avQ/Yyzq5Y0spe', '1'),
-(4, 3, 'HO', 'ho@gmail.com', '08123456789', 'a1c345bd5373cc9ce9066f3b0ae3d182.jpg', '$2y$10$USnTGOmttsv84ZRHK/gGCeEZNxV1A1kdX3eHjm.avQ/Yyzq5Y0spe', '1');
+(1, 1, 'Admin', 'admin@gmail.com', '082299915127', 'default.png', '$2y$10$USnTGOmttsv84ZRHK/gGCeEZNxV1A1kdX3eHjm.avQ/Yyzq5Y0spe', '1'),
+(2, 2, 'HO', 'ho@gmail.com', '09213120932', 'default.png', '$2y$10$CyOLqU2hForyBcGd4WZ8w.5ijsDGxiAsVULgVCevEisSqOYObMEW6', '1');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `departement`
+-- Indexes for table `departement`
 --
 ALTER TABLE `departement`
   ADD PRIMARY KEY (`id_departement`);
 
 --
--- Indeks untuk tabel `jabatan`
+-- Indexes for table `jabatan`
 --
 ALTER TABLE `jabatan`
   ADD PRIMARY KEY (`id_jabatan`);
 
 --
--- Indeks untuk tabel `karyawan`
+-- Indexes for table `karyawan`
 --
 ALTER TABLE `karyawan`
   ADD PRIMARY KEY (`id_karyawan`);
 
 --
--- Indeks untuk tabel `kategori_obat`
+-- Indexes for table `kategori_obat`
 --
 ALTER TABLE `kategori_obat`
   ADD PRIMARY KEY (`id_kategori_obat`);
 
 --
--- Indeks untuk tabel `kunjungan_berobat`
+-- Indexes for table `kunjungan_berobat`
 --
 ALTER TABLE `kunjungan_berobat`
   ADD PRIMARY KEY (`id_kunjungan_berobat`);
 
 --
--- Indeks untuk tabel `mcu`
+-- Indexes for table `mcu`
 --
 ALTER TABLE `mcu`
   ADD PRIMARY KEY (`id_mcu`);
 
 --
--- Indeks untuk tabel `obat`
+-- Indexes for table `obat`
 --
 ALTER TABLE `obat`
   ADD PRIMARY KEY (`id_obat`);
 
 --
--- Indeks untuk tabel `obat_pasien`
+-- Indexes for table `obat_pasien`
 --
 ALTER TABLE `obat_pasien`
   ADD PRIMARY KEY (`id_obat_pasien`);
 
 --
--- Indeks untuk tabel `skd`
+-- Indexes for table `skd`
 --
 ALTER TABLE `skd`
   ADD PRIMARY KEY (`id_skd`);
 
 --
--- Indeks untuk tabel `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `departement`
+-- AUTO_INCREMENT for table `departement`
 --
 ALTER TABLE `departement`
-  MODIFY `id_departement` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_departement` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `jabatan`
+-- AUTO_INCREMENT for table `jabatan`
 --
 ALTER TABLE `jabatan`
-  MODIFY `id_jabatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_jabatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `karyawan`
+-- AUTO_INCREMENT for table `karyawan`
 --
 ALTER TABLE `karyawan`
-  MODIFY `id_karyawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_karyawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `kategori_obat`
+-- AUTO_INCREMENT for table `kategori_obat`
 --
 ALTER TABLE `kategori_obat`
-  MODIFY `id_kategori_obat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_kategori_obat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `kunjungan_berobat`
+-- AUTO_INCREMENT for table `kunjungan_berobat`
 --
 ALTER TABLE `kunjungan_berobat`
   MODIFY `id_kunjungan_berobat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `mcu`
+-- AUTO_INCREMENT for table `mcu`
 --
 ALTER TABLE `mcu`
   MODIFY `id_mcu` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `obat`
+-- AUTO_INCREMENT for table `obat`
 --
 ALTER TABLE `obat`
-  MODIFY `id_obat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_obat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `obat_pasien`
+-- AUTO_INCREMENT for table `obat_pasien`
 --
 ALTER TABLE `obat_pasien`
   MODIFY `id_obat_pasien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `skd`
+-- AUTO_INCREMENT for table `skd`
 --
 ALTER TABLE `skd`
-  MODIFY `id_skd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_skd` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
